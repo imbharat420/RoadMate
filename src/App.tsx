@@ -1,18 +1,32 @@
 import * as React from 'react';
-import {Provider as PaperProvider} from 'react-native-paper';
+import {
+  MD3LightTheme as DefaultTheme,
+  Provider as PaperProvider,
+} from 'react-native-paper';
+// import AppNavigator from './AppNavigator';
 // import GetStarted from './screens/GetStarted';
-import LoginWith from './screens/LoginWith';
+import LoginWith from './screens/auth/LoginWith';
+import Gender from './screens/auth/Gender';
+import Onboarding from './screens/Onboarding';
 // const CardComponent = () => <Text>Hello</Text>;
 
 export default function Main() {
   return (
     <PaperProvider>
-      {/* <GetStarted /> */}
-      <LoginWith />
+      <Onboarding />
     </PaperProvider>
   );
 }
 
+const theme = {
+  ...DefaultTheme,
+  // Specify custom property
+  myOwnProperty: true,
+  // Specify custom property in nested object
+  colors: {
+    myOwnColor: '#BADA55',
+  },
+};
 
 /*
  <Text>This is text</Text>

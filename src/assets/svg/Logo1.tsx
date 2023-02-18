@@ -1,0 +1,215 @@
+import * as React from "react";
+import Svg, { Path, Line, G } from "react-native-svg";
+const SVGComponent = (props) => (
+  <Svg
+    xmlns="http://www.w3.org/2000/svg"
+    x="0px"
+    y="0px"
+    width={64}
+    height={64}
+    viewBox="0 0 66 66"
+    {...props}
+  >
+    <Path
+      fill="#ffcd57"
+      d="M63.89,38.05v19.67c0,3.47-2.82,6.29-6.29,6.29H12.55c-3.47,0-6.29-2.82-6.29-6.29V38.05H63.89z"
+    />
+    <Path
+      fill="#f2bb45"
+      d="M63.89,52.57v5.14c0,3.47-2.82,6.29-6.29,6.29H12.55c-3.47,0-6.29-2.82-6.29-6.29V38.05h10.83 c-0.28,0.64-0.44,1.29-0.44,1.97c0,7.14,17.12,12.92,38.24,12.92C57.98,52.94,61,52.81,63.89,52.57z"
+    />
+    <Path
+      fill="#f5f5fa"
+      d="M47.32,44.58v12.89c0,1.18-0.96,2.13-2.13,2.13H24.96c-1.18,0-2.13-0.96-2.13-2.13V44.58 c0-1.18,0.96-2.13,2.13-2.13h20.22C46.36,42.44,47.32,43.4,47.32,44.58z"
+    />
+    <Path
+      fill="#e5e8ec"
+      d="M47.32,54.48v2.99c0,1.18-0.96,2.14-2.14,2.14H24.97c-1.18,0-2.14-0.96-2.14-2.14V44.58 c0-1.18,0.96-2.14,2.14-2.14h8.02c-1.16,1.09-1.8,2.31-1.8,3.6C31.19,50.28,38.16,53.79,47.32,54.48z"
+    />
+    <Path
+      fill="#ec5664"
+      d="M63.89,38.05v-7.18c0-1.03-0.83-1.86-1.86-1.86H6.26v9.04H63.89z"
+    />
+    <Path
+      fill="#db4554"
+      d="M63.89,32.53v5.51H6.26v-9.04h12.83c-0.02,0.05-0.02,0.1-0.02,0.15c0,2.75,11.55,4.99,25.79,4.99 C52.39,34.16,59.17,33.53,63.89,32.53z"
+    />
+    <Path
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+      d="M63.89,38.05v19.67c0,3.47-2.82,6.29-6.29,6.29H12.55c-3.47,0-6.29-2.82-6.29-6.29V38.05H63.89z"
+    />
+    <Path
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+      d="M63.89,38.05v-7.18c0-1.03-0.83-1.86-1.86-1.86H6.26v9.04H63.89z"
+    />
+    <Line
+      x1={14.21}
+      x2={20.88}
+      y1={29.01}
+      y2={37.47}
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+    />
+    <Line
+      x1={26.49}
+      x2={33.15}
+      y1={29.01}
+      y2={37.47}
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+    />
+    <Line
+      x1={38.76}
+      x2={45.43}
+      y1={29.01}
+      y2={37.47}
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+    />
+    <Line
+      x1={51.04}
+      x2={57.7}
+      y1={29.01}
+      y2={37.47}
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+    />
+    <Path
+      fill="#ec5664"
+      d="M60.29,8.88l-0.87-2.59c-1.11-3.29-4.67-5.07-7.97-3.96L8.75,16.69c-3.29,1.11-5.07,4.67-3.96,7.97l1.46,4.36 l52.86-17.77C60.1,10.91,60.62,9.85,60.29,8.88z"
+    />
+    <Path
+      fill="#db4554"
+      d="M59.42,6.29l0.87,2.59c0.33,0.97-0.2,2.03-1.17,2.35L6.26,29.01L4.8,24.66c-1.11-3.3,0.66-6.87,3.95-7.97 l6.31-2.12c0,0.03,0.01,0.05,0.02,0.08c1.09,3.23,12.92,2.17,26.42-2.37c6.93-2.33,12.95-5.12,17.03-7.72 C58.89,5.06,59.21,5.65,59.42,6.29z"
+    />
+    <Path
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+      d="M60.29,8.88l-0.87-2.59c-1.11-3.29-4.67-5.07-7.97-3.96L8.75,16.69c-3.29,1.11-5.07,4.67-3.96,7.97l1.46,4.36 l52.86-17.77C60.1,10.91,60.62,9.85,60.29,8.88z"
+    />
+    <Line
+      x1={16.65}
+      x2={13.8}
+      y1={14.03}
+      y2={26.48}
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+    />
+    <Line
+      x1={28.28}
+      x2={25.43}
+      y1={10.12}
+      y2={22.56}
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+    />
+    <Line
+      x1={39.92}
+      x2={37.07}
+      y1={6.21}
+      y2={18.65}
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+    />
+    <Line
+      x1={51.55}
+      x2={48.7}
+      y1={2.3}
+      y2={14.74}
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+    />
+    <Path
+      fill="#cacdd6"
+      d="M10.01,29.01c0,2.19-1.77,3.95-3.95,3.95c-2.18,0-3.95-1.77-3.95-3.95c0-2.19,1.77-3.95,3.95-3.95 C8.25,25.05,10.01,26.82,10.01,29.01z"
+    />
+    <Path
+      fill="#a9b1bc"
+      d="M9.94,29.72C9.61,31.57,8,32.96,6.06,32.96c-2.18,0-3.95-1.77-3.95-3.95c0-1.65,1-3.06,2.43-3.65 c-0.05,0.23-0.06,0.46-0.06,0.71c0,2.19,1.77,3.95,3.95,3.95C8.97,30.02,9.48,29.91,9.94,29.72z"
+    />
+    <Path
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+      d="M10.01,29.01c0,2.19-1.77,3.95-3.95,3.95c-2.18,0-3.95-1.77-3.95-3.95c0-2.19,1.77-3.95,3.95-3.95 C8.25,25.05,10.01,26.82,10.01,29.01z"
+    />
+    <Path
+      fill="none"
+      stroke="#434753"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={10}
+      strokeWidth={1.5}
+      d="M47.32,44.58v12.89c0,1.18-0.96,2.13-2.13,2.13H24.96c-1.18,0-2.13-0.96-2.13-2.13V44.58 c0-1.18,0.96-2.13,2.13-2.13h20.22C46.36,42.44,47.32,43.4,47.32,44.58z"
+    />
+    <G>
+      <Path
+        fill="#ec5664"
+        d="M39.42,51.77l-3.49,3.47c-0.49,0.48-1.28,0.48-1.76-0.01l-3.46-3.49c-1.21-1.22-1.21-3.18,0.01-4.39 c1.21-1.2,3.14-1.2,4.36-0.02c1.22-1.18,3.16-1.16,4.36,0.05C40.65,48.6,40.64,50.56,39.42,51.77z"
+      />
+      <Path
+        fill="#db4554"
+        d="M37.91,53.28l-1.97,1.96c-0.49,0.48-1.28,0.48-1.76-0.01l-3.46-3.49c-1.21-1.22-1.21-3.18,0.01-4.39 c0.73-0.72,1.72-1.01,2.66-0.86c-0.15,0.49-0.23,1-0.23,1.54C33.16,50.76,35.24,53.01,37.91,53.28z"
+      />
+      <Path
+        fill="none"
+        stroke="#434753"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        strokeWidth={1.5}
+        d="M39.42,51.77l-3.49,3.47c-0.49,0.48-1.28,0.48-1.76-0.01l-3.46-3.49c-1.21-1.22-1.21-3.18,0.01-4.39 c1.21-1.2,3.14-1.2,4.36-0.02c1.22-1.18,3.16-1.16,4.36,0.05C40.65,48.6,40.64,50.56,39.42,51.77z"
+      />
+    </G>
+  </Svg>
+);
+export default SVGComponent;

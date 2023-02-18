@@ -1,3 +1,3 @@
 import Couple from './img/couple.png';
 
-export {Couple};
+export { Couple };

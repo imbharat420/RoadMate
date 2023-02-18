@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,37 +8,36 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
   },
-  flex:{
+  flex: {
     gap: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
   },
-  mt15:{
-    marginTop: 15, 
+  mt15: {
+    marginTop: 15,
   },
-  btn:{
+  btn: {
     backgroundColor: '#fff',
     width: '100%',
     marginTop: 20,
     borderRadius: 10,
   },
-  label: {color: '#f92e4b', fontSize: 15},
-  text:{
+  label: { color: '#f92e4b', fontSize: 15 },
+  text: {
     color: '#fff',
   },
-  poster:{
+  poster: {
     height: '40%',
     justifyContent: 'flex-end',
     alignItems: 'center',
-  }, 
-  bottomStyle:{
+  },
+  bottomStyle: {
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 50,
     textAlign: 'center',
-  }
+  },
 });
-
 
 export default styles;

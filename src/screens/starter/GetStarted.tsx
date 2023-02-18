@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {View,StyleSheet} from 'react-native';
-import {IconButton, MD3Colors, Image,Button, Text} from 'react-native-paper';
+import React, { useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { IconButton, MD3Colors, Image, Button, Text } from 'react-native-paper';
 
 export default function GetStarted() {
   return (
@@ -10,37 +10,35 @@ export default function GetStarted() {
         <Text style={styles.text}>AR Dating</Text>
       </View>
       <Button
-        mode="contained" 
+        mode="contained"
         labelStyle={styles.label}
         onPress={() => console.log('Pressed')}
         style={styles.btn}
       >
-        <Text style={{color: '#f92e4b'}}>Get Started</Text>
-      </Button> 
+        <Text style={{ color: '#f92e4b' }}>Get Started</Text>
+      </Button>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f92e4b',
     height: '100%',
-   
   },
-  btn:{
+  btn: {
     backgroundColor: '#fff',
     width: '80%',
     alignSelf: 'center',
     top: '10%',
   },
-  label: {color: '#f92e4b', fontSize: 15},
-  text:{
+  label: { color: '#f92e4b', fontSize: 15 },
+  text: {
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold',
   },
-  poster:{
+  poster: {
     height: '60%',
     justifyContent: 'flex-end',
     alignItems: 'center',

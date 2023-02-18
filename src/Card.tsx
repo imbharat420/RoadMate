@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Provider as PaperProvider, Text,Button} from 'react-native-paper';
+import {Provider as PaperProvider, Text, Button} from 'react-native-paper';
 // import CardComponent from './src/Card';
 
 const CardComponent = () => <Text>Hello</Text>;
