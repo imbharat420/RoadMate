@@ -21,11 +21,7 @@
   "noUnusedParameters": true,
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-      "$screens/*": ["./src/screens/*"],
-      "$components/*": ["./src/components/*"],
-      "$styles/*": ["./src/styles/*"]
-    },
+    
    "resolveJsonModule": true,
     "strict": true,
     "strictFunctionTypes": true,

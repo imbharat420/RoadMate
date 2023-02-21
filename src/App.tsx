@@ -8,15 +8,10 @@ import {
 import LoginWith from './screens/auth/LoginWith';
 import Gender from './screens/auth/Gender';
 import Onboarding from './screens/Onboarding';
+import SelectInterest from './screens/SelectInterest';
+import UploadImages from './screens/UploadImages';
+import Profile from './screens/Profile';
 // const CardComponent = () => <Text>Hello</Text>;
-
-export default function Main() {
-  return (
-    <PaperProvider>
-      <Onboarding />
-    </PaperProvider>
-  );
-}
 
 const theme = {
   ...DefaultTheme,
@@ -27,6 +22,14 @@ const theme = {
     myOwnColor: '#BADA55',
   },
 };
+
+export default function Main() {
+  return (
+    <PaperProvider theme={theme}>
+      <Profile />
+    </PaperProvider>
+  );
+}
 
 /*
  <Text>This is text</Text>
