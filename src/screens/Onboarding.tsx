@@ -10,11 +10,11 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import { LocationIcon, MessageIcon, SearchIcon } from '../assets/svg';
+import {LocationIcon, MessageIcon, SearchIcon} from '../assets/svg';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
-const COLORS = { primary: '#b84d4d', white: '#fff' };
+const COLORS = {primary: '#b84d4d', white: '#fff'};
 
 const slides = [
   {
@@ -37,14 +37,14 @@ const slides = [
   },
 ];
 
-const Slide = ({ item }) => {
-  const { Image, title, subtitle } = item;
+const Slide = ({item}) => {
+  const {Image, title, subtitle} = item;
   return (
     <View style={styles.container}>
       <View style={styles.fullWidth}>
         <Image width={width * 0.7} height={height * 0.4} />
       </View>
-      <View style={{ alignItems: 'center' }}>
+      <View style={{alignItems: 'center'}}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.subtitle}>{subtitle}</Text>
       </View>
@@ -52,10 +52,10 @@ const Slide = ({ item }) => {
   );
 };
 
-const OnboardingScreen = () => {
+const OnboardingScreen = ({navigation}) => {
   const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
   const ref = React.useRef();
-  const updateCurrentSlideIndex = (e) => {
+  const updateCurrentSlideIndex = e => {
     const contentOffsetX = e.nativeEvent.contentOffset.x;
     const currentIndex = Math.round(contentOffsetX / width);
     setCurrentSlideIndex(currentIndex);
@@ -65,15 +65,15 @@ const OnboardingScreen = () => {
     const nextSlideIndex = currentSlideIndex + 1;
     if (nextSlideIndex != slides.length) {
       const offset = nextSlideIndex * width;
-      ref?.current.scrollToOffset({ offset });
+      ref?.current.scrollToOffset({offset});
       setCurrentSlideIndex(currentSlideIndex + 1);
     }
   };
 
-  const skip = () => {
+  const skip = ({navigation}) => {
     const lastSlideIndex = slides.length - 1;
     const offset = lastSlideIndex * width;
-    ref?.current.scrollToOffset({ offset });
+    ref?.current.scrollToOffset({offset});
     setCurrentSlideIndex(lastSlideIndex);
   };
 
@@ -84,16 +84,14 @@ const OnboardingScreen = () => {
           height: height * 0.25,
           justifyContent: 'space-between',
           paddingHorizontal: 20,
-        }}
-      >
+        }}>
         {/* Indicator container */}
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
             marginTop: 20,
-          }}
-        >
+          }}>
           {/* Render indicator */}
           {slides.map((_, index) => (
             <View
@@ -110,20 +108,19 @@ const OnboardingScreen = () => {
         </View>
 
         {/* Render buttons */}
-        <View style={{ marginBottom: 20 }}>
+        <View style={{marginBottom: 20}}>
           {currentSlideIndex == slides.length - 1 ? (
-            <View style={{ height: 50 }}>
+            <View style={{height: 50}}>
               <TouchableOpacity
                 style={styles.btn}
-                // onPress={() => navigation.replace('HomeScreen')}
-              >
-                <Text style={{ fontWeight: 'bold', fontSize: 15 }}>
+                onPress={() => navigation.replace('Home')}>
+                <Text style={{fontWeight: 'bold', fontSize: 15}}>
                   GET STARTED
                 </Text>
               </TouchableOpacity>
             </View>
           ) : (
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{flexDirection: 'row'}}>
               <TouchableOpacity
                 activeOpacity={0.8}
                 style={[
@@ -134,30 +131,26 @@ const OnboardingScreen = () => {
                     backgroundColor: 'transparent',
                   },
                 ]}
-                onPress={skip}
-              >
+                onPress={skip}>
                 <Text
                   style={{
                     fontWeight: 'bold',
                     fontSize: 15,
                     color: COLORS.white,
-                  }}
-                >
+                  }}>
                   SKIP
                 </Text>
               </TouchableOpacity>
-              <View style={{ width: 15 }} />
+              <View style={{width: 15}} />
               <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={goToNextSlide}
-                style={styles.btn}
-              >
+                style={styles.btn}>
                 <Text
                   style={{
                     fontWeight: 'bold',
                     fontSize: 15,
-                  }}
-                >
+                  }}>
                   NEXT
                 </Text>
               </TouchableOpacity>
@@ -169,19 +162,19 @@ const OnboardingScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primary}}>
       <StatusBar backgroundColor={COLORS.primary} />
       <FlatList
         ref={ref}
         onMomentumScrollEnd={updateCurrentSlideIndex}
-        contentContainerStyle={{ height: height * 0.75 }}
+        contentContainerStyle={{height: height * 0.75}}
         showsHorizontalScrollIndicator={false}
         horizontal
         data={slides}
         pagingEnabled
-        renderItem={({ item }) => <Slide item={item} />}
+        renderItem={({item}) => <Slide item={item} />}
       />
-      <Footer />
+      <Footer navigation={navigation} />
     </SafeAreaView>
   );
 };

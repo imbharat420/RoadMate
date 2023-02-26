@@ -8,12 +8,17 @@ import {
   ScrollView,
   StatusBar,
   TouchableNativeFeedback,
-  PixelRatio,
-  Platform,
+  useWindowDimensions,
 } from 'react-native';
+import {Text, Chip, Button, Title, Paragraph} from 'react-native-paper';
 import React from 'react';
-import {Button, Text} from 'react-native-paper';
-import {stories} from './constants';
+
+import {
+  Tabs,
+  TabScreen,
+  useTabIndex,
+  useTabNavigation,
+} from 'react-native-paper-tabs';
 import {
   AddIcon,
   CommentIcon,
@@ -23,10 +28,14 @@ import {
   MoreIcon,
   SaveIcon,
 } from '../assets/svg';
+
+import {stories} from '../screens/constants';
+
 import {useNavigation} from '@react-navigation/native';
 import timeAgo from '../utils/timeAgo';
 
 const {width, height} = Dimensions.get('window');
+
 // Sizes based on Google Nexus 5 on genymotion
 const guidelineBaseWidth = 360;
 const guidelineBaseHeight = 592;
@@ -39,89 +48,6 @@ const moderateScale = (size, factor = 0.5) => {
   }
 
   return size + (scale(size) - size) * factor;
-};
-
-const FeaturedImage = ({item}) => {
-  return (
-    <View style={styles.featuredImages}>
-      <Image source={item.image} style={styles.featuredImage} />
-      <View>
-        <Text
-          variant="labelMedium"
-          numberOfLines={1}
-          ellipsizeMode="tail"
-          style={{
-            textAlign: 'center',
-            width: '100%',
-            fontSize: 10,
-          }}>
-          {item.name}
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-const AddStory = () => {
-  return (
-    <View style={styles.featuredImages}>
-      <View>
-        <Image source={stories[1].image} style={[styles.featuredImage]} />
-        <View style={styles.infoBottom}>
-          <AddIcon width={10} height={10} fill="#fff" />
-        </View>
-      </View>
-      <View>
-        <Text
-          variant="labelMedium"
-          numberOfLines={1}
-          ellipsizeMode="tail"
-          style={{
-            textAlign: 'center',
-            // width: 65,
-            fontSize: 10,
-          }}>
-          Your Story
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-const Featured = () => {
-  return (
-    <View style={[styles.interestContainer, styles.bb1]}>
-      <View style={[styles.interests]}>
-        <AddStory />
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={stories}
-          renderItem={({item}) => <FeaturedImage item={item} />}
-          keyExtractor={item => item.id}
-          bounces={true}
-        />
-      </View>
-    </View>
-  );
-};
-
-const Topbar = () => {
-  const navigation = useNavigation();
-  return (
-    <View style={[styles.center, styles.spaceBetween]}>
-      <Text
-        variant="headlineMedium"
-        style={{fontWeight: 900, color: '#b84d4d'}}>
-        Feed
-      </Text>
-      <View>
-        <TouchableNativeFeedback onPress={() => navigation.navigate('Inbox')}>
-          <InboxIcon width={20} height={20} />
-        </TouchableNativeFeedback>
-      </View>
-    </View>
-  );
 };
 
 const Post = ({item}) => {
@@ -205,15 +131,7 @@ const Posts = () => {
   );
 };
 
-export default function Home({navigation}) {
-  return (
-    <ScrollView style={styles.container}>
-      <Topbar />
-      <Featured />
-      <Posts />
-    </ScrollView>
-  );
-}
+export default Posts;
 
 const styles = StyleSheet.create({
   container: {

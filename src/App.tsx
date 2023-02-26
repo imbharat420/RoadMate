@@ -3,7 +3,7 @@ import {
   MD3LightTheme as DefaultTheme,
   Provider as PaperProvider,
 } from 'react-native-paper';
-// import AppNavigator from './AppNavigator';
+import AppNavigator from './AppNavigator';
 // import GetStarted from './screens/GetStarted';
 import LoginWith from './screens/auth/LoginWith';
 import Gender from './screens/auth/Gender';
@@ -26,7 +26,7 @@ const theme = {
 export default function Main() {
   return (
     <PaperProvider theme={theme}>
-      <Profile />
+      <AppNavigator />
     </PaperProvider>
   );
 }

@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.reactnative3"
+    namespace "com.roadmatelast"
     defaultConfig {
-        applicationId "com.reactnative3"
+        applicationId "com.roadmatelast"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

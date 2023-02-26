@@ -7,10 +7,12 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
+  TouchableNativeFeedback,
+  useWindowDimensions,
 } from 'react-native';
-import { Text, Chip, Button, Title, Paragraph } from 'react-native-paper';
+import {Text, Chip, Button, Title, Paragraph} from 'react-native-paper';
 import React from 'react';
-import { stories, myInterests } from './constants';
+import {stories, myInterests} from './constants';
 import {
   Tabs,
   TabScreen,
@@ -18,13 +20,26 @@ import {
   useTabNavigation,
 } from 'react-native-paper-tabs';
 
-const { width } = Dimensions.get('window');
+import {
+  AddIcon,
+  CommentIcon,
+  DirectIcon,
+  HeartIcon,
+  InboxIcon,
+  MoreIcon,
+  SaveIcon,
+} from '../assets/svg';
+import {useNavigation} from '@react-navigation/native';
+import timeAgo from '../utils/timeAgo';
+
+import {TabView, SceneMap} from 'react-native-tab-view';
+import TabComp from '../components/TabView';
+import Posts from '../components/Posts';
 
 const Topbar = () => {
   return (
     <View
-      style={{ display: 'flex', justifyContent: 'space-between', padding: 20 }}
-    >
+      style={{display: 'flex', justifyContent: 'space-between', padding: 20}}>
       <Text variant="displaySmall">Profile</Text>
     </View>
   );
@@ -69,28 +84,26 @@ const ProfileHeader = () => {
 
 const ProfileButtons = () => {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{flexDirection: 'row'}}>
       <Button
         mode="contained"
-        style={{ backgroundColor: '#b84d4d', flex: 1, margin: 10 }}
+        style={{backgroundColor: '#b84d4d', flex: 1, margin: 10}}
         textColor="#fff"
-        onPress={() => console.log('Pressed')}
-      >
+        onPress={() => console.log('Pressed')}>
         Connect
       </Button>
       <Button
         mode="contained"
-        style={{ backgroundColor: '#b84d4d', flex: 1, margin: 10 }}
+        style={{backgroundColor: '#b84d4d', flex: 1, margin: 10}}
         textColor="#fff"
-        onPress={() => console.log('Pressed')}
-      >
+        onPress={() => console.log('Pressed')}>
         Message
       </Button>
     </View>
   );
 };
 
-const InterestChip = ({ item }) => {
+const InterestChip = ({item}) => {
   return (
     <Chip
       // eslint-disable-next-line react-native/no-inline-styles
@@ -103,16 +116,15 @@ const InterestChip = ({ item }) => {
       }}
       elevation={1}
       // icon="information"
-      avatar={<Image source={item.image} style={{ borderRadius: 0 }} />}
-      onPress={() => setInterestHandler(item.name)}
-    >
+      avatar={<Image source={item.image} style={{borderRadius: 0}} />}
+      onPress={() => setInterestHandler(item.name)}>
       {item.name}
     </Chip>
   );
 };
 
 const Interests = () => {
-  const setInterestHandler = (el) => {
+  const setInterestHandler = el => {
     console.log(el);
   };
   return (
@@ -125,15 +137,15 @@ const Interests = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={myInterests}
-          renderItem={({ item }) => <InterestChip item={item} />}
-          keyExtractor={(item) => item.id}
+          renderItem={({item}) => <InterestChip item={item} />}
+          keyExtractor={item => item.id}
         />
       </View>
     </View>
   );
 };
 
-const FeaturedImage = ({ item }) => {
+const FeaturedImage = ({item}) => {
   return (
     <View style={styles.featuredImages}>
       <Image source={item.image} style={styles.featuredImage} />
@@ -146,8 +158,7 @@ const FeaturedImage = ({ item }) => {
             textAlign: 'center',
             marginTop: 4,
             width: 75,
-          }}
-        >
+          }}>
           {item.name}
         </Text>
       </View>
@@ -163,8 +174,8 @@ const Featured = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={stories}
-          renderItem={({ item }) => <FeaturedImage item={item} />}
-          keyExtractor={(item) => item.id}
+          renderItem={({item}) => <FeaturedImage item={item} />}
+          keyExtractor={item => item.id}
         />
       </View>
     </View>
@@ -180,12 +191,14 @@ const TabsComponent = () => {
     showTextLabel: true, // true/false | default=false (KEEP PROVIDING LABEL WE USE IT AS KEY INTERNALLY + SCREEN READERS)
     iconPosition: 'leading', // leading / top
     style: {
-      color: 'red',
-    }, // works the same as AppBar in react-native-paper
+      backgroundColor: '#fff',
+      width: width,
+    },
     theme: {
       colors: {
         primary: '#b84d4d',
         accent: '#f1c40f',
+        activeColor: '#b84d4d',
       },
       fonts: {
         medium: {
@@ -199,11 +212,14 @@ const TabsComponent = () => {
     }, // works the same as AppBar in react-native-paper
     mode: 'scrollable', // fixed, scrollable | default=fixed}
     // onChangeIndex:
+    width: '100%', // works the same as AppBar in react-native-paper
+    display: 'auto', // works the same as AppBar in react-native-paper
+
     showLeadingSpace: true, // show leading space in scrollable tabs inside the header
   };
   return (
     <View>
-      <View style={{ width: '100%', height: 900 }}>
+      <View style={{width: '100%', height: '100%'}}>
         <Tabs {...tabProps}>
           <TabScreen label="Posts">
             <Posts />
@@ -212,55 +228,6 @@ const TabsComponent = () => {
             <ScreenWithText text={'Posts'} />
           </TabScreen>
         </Tabs>
-      </View>
-    </View>
-  );
-};
-
-const Posts = () => {
-  return (
-    <View>
-      <View style={styles.postContainer}>
-        <View style={styles.postHeader}>
-          <View style={styles.postHeaderLeft}>
-            <Image
-              style={{ width: 50, height: 50, borderRadius: 50 }}
-              source={require('../assets/img/profile1.jpg')}
-            />
-            <View style={styles.postHeaderLeftText}>
-              <Text variant="labelMedium">John Doe</Text>
-              <Text variant="labelMedium">2h</Text>
-            </View>
-          </View>
-          <View style={styles.postHeaderRight}>{/* <Text>...</Text> */}</View>
-        </View>
-        <View style={styles.postHeaderRight}>
-          <Text variant="labelMedium">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-          </Text>
-        </View>
-        <View style={styles.postImage}>
-          <Image
-            style={{ width: '100%', height: width / 2, borderRadius: 10 }}
-            source={require('../assets/img/profile1.jpg')}
-          />
-        </View>
-        <View style={styles.postFooter}>
-          <View style={styles.postFooterLeft}>
-            <View style={styles.postFooterLeftIcon}>
-              <Text>Heart</Text>
-              {/* <Icon name="heart" size={20} color="#b84d4d" /> */}
-            </View>
-            <View style={styles.postFooterLeftIcon}>
-              <Text>Comment</Text>
-              {/* <Icon name="comment" size={20} color="#b84d4d" /> */}
-            </View>
-            <View style={styles.postFooterLeftIcon}>
-              <Text>Share</Text>
-              {/* <Icon name="share" size={20} color="#b84d4d" /> */}
-            </View>
-          </View>
-        </View>
       </View>
     </View>
   );
@@ -278,7 +245,7 @@ const VerticalBorder = () => {
   );
 };
 
-function ScreenWithText({ text }: { text: string }) {
+function ScreenWithText({text}: {text: string}) {
   return (
     <View>
       <Title>{text}asdas</Title>
@@ -298,7 +265,7 @@ export default function Profile() {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView>
         <View style={styles.container}>
           {/* <Topbar /> */}
           <ProfileHeader />
@@ -311,9 +278,8 @@ export default function Profile() {
           </View>
           <Interests />
         </View>
-
-        <View style={{ height: 600, flex: 1, marginTop: 20 }}>
-          <TabsComponent />
+        <View style={{height: 600, flex: 1, marginTop: 20}}>
+          <TabComp />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -324,7 +290,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: StatusBar.currentHeight,
   },
   center: {
     marginLeft: 'auto',
@@ -364,7 +329,7 @@ const styles = StyleSheet.create({
   },
   interests: {
     marginTop: 9,
-    marginLeft: 20,
+    marginLeft: 11,
     gap: 4,
     flexDirection: 'row',
     flexWrap: 'wrap',

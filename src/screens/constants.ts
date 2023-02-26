@@ -1,4 +1,4 @@
-import { TurboModuleRegistry } from 'react-native/types';
+import {TurboModuleRegistry} from 'react-native/types';
 
 export let interests = [
   {
@@ -118,30 +118,45 @@ export let myInterests = [
   },
 ];
 
+const subDay = (date: Date, days: number) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() - days);
+  return result;
+};
 export let stories = [
   {
     id: 1,
-    name: 'Cute Days with her! no we can not do this',
+    name: 'John',
+    timeAgo: subDay(new Date(), 10),
+    story: 'Cute Days with her! no we can not do this',
     image: require('../assets/img/profile1.jpg'),
   },
   {
     id: 2,
-    name: 'Dancing',
+    name: 'Bob',
+    timeAgo: subDay(new Date(), 100),
+    story: 'Cute Days with her! no we can not do this',
     image: require('../assets/img/profile2.jpg'),
   },
   {
     id: 3,
-    name: 'Makeup',
+    name: 'Cat',
+    timeAgo: subDay(new Date(), 30),
+    story: 'Cute Days with her! no we can not do this',
     image: require('../assets/img/profile1.jpg'),
   },
   {
     id: 4,
-    name: 'With her!',
+    name: 'Dog',
+    timeAgo: subDay(new Date(), 785),
+    story: 'Cute Days with her! no we can not do this',
     image: require('../assets/img/profile2.jpg'),
   },
   {
     id: 5,
-    name: 'Wow you',
+    name: 'Roger',
+    timeAgo: subDay(new Date(), 365),
+    story: 'Cute Days with her! no we can not do this',
     image: require('../assets/img/profile2.jpg'),
   },
 ];
