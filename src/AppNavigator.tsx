@@ -30,7 +30,7 @@ export default function AppNavigator() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{headerShown: false}}
+          options={{headerShown: true}}
         />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Inbox" component={Inbox} />

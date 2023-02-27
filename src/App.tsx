@@ -5,12 +5,11 @@ import {
 } from 'react-native-paper';
 import AppNavigator from './AppNavigator';
 // import GetStarted from './screens/GetStarted';
-import LoginWith from './screens/auth/LoginWith';
-import Gender from './screens/auth/Gender';
-import Onboarding from './screens/Onboarding';
-import SelectInterest from './screens/SelectInterest';
-import UploadImages from './screens/UploadImages';
-import Profile from './screens/Profile';
+
+import BottomNavigation from '../components/BottomNavigation';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {NavigationContainer} from '@react-navigation/native/';
+
 // const CardComponent = () => <Text>Hello</Text>;
 
 const theme = {
@@ -25,11 +24,16 @@ const theme = {
 
 export default function Main() {
   return (
-    <PaperProvider theme={theme}>
-      <AppNavigator />
-    </PaperProvider>
+    <SafeAreaProvider>
+      <PaperProvider theme={theme}>
+        <AppNavigator />
+      </PaperProvider>
+    </SafeAreaProvider>
   );
 }
+/*
+
+*/
 
 /*
  <Text>This is text</Text>

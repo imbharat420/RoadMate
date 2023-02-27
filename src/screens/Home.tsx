@@ -25,6 +25,7 @@ import {
 } from '../assets/svg';
 import {useNavigation} from '@react-navigation/native';
 import timeAgo from '../utils/timeAgo';
+import BottomNavigation from '';
 
 const {width, height} = Dimensions.get('window');
 // Sizes based on Google Nexus 5 on genymotion
@@ -194,23 +195,24 @@ const Post = ({item}) => {
 };
 
 const Posts = () => {
+  return <View style={[styles.postsContainer]}></View>;
+};
+
+export default function Home() {
   return (
-    <View style={[styles.postsContainer]}>
+    <ScrollView style={styles.container}>
+      {/* <Posts /> */}
       <FlatList
+        ListHeaderComponent={
+          <>
+            <Topbar />
+            <Featured />
+          </>
+        }
         data={stories}
         renderItem={({item}) => <Post item={item} />}
         keyExtractor={item => item.id}
       />
-    </View>
-  );
-};
-
-export default function Home({navigation}) {
-  return (
-    <ScrollView style={styles.container}>
-      <Topbar />
-      <Featured />
-      <Posts />
     </ScrollView>
   );
 }
