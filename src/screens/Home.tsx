@@ -1,218 +1,43 @@
-import {
-  View,
-  StyleSheet,
-  Image,
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  TouchableNativeFeedback,
-  PixelRatio,
-  Platform,
-} from 'react-native';
-import React from 'react';
-import {Button, Text} from 'react-native-paper';
-import {stories} from './constants';
-import {
-  AddIcon,
-  CommentIcon,
-  DirectIcon,
-  HeartIcon,
-  InboxIcon,
-  MoreIcon,
-  SaveIcon,
-} from '../assets/svg';
-import {useNavigation} from '@react-navigation/native';
-import timeAgo from '../utils/timeAgo';
-import BottomNavigation from '';
+import * as React from 'react';
+import {View, StyleSheet, FlatList} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import {Searchbar, Text, Avatar, Card, Button} from 'react-native-paper';
+import RectBadge from '@components/RectBadge';
 
-const {width, height} = Dimensions.get('window');
-// Sizes based on Google Nexus 5 on genymotion
-const guidelineBaseWidth = 360;
-const guidelineBaseHeight = 592;
+export default function Home() {
+  const [searchQuery, setSearchQuery] = React.useState<String>('');
 
-const scale = size => (width / guidelineBaseWidth) * size;
-const verticalScale = size => (height / guidelineBaseHeight) * size;
-const moderateScale = (size, factor = 0.5) => {
-  if (Platform.OS === 'ios') {
-    factor = PixelRatio.get();
-  }
-
-  return size + (scale(size) - size) * factor;
-};
-
-const FeaturedImage = ({item}) => {
+  const onChangeSearch = (query: String) => setSearchQuery(query);
   return (
-    <View style={styles.featuredImages}>
-      <Image source={item.image} style={styles.featuredImage} />
-      <View>
-        <Text
-          variant="labelMedium"
-          numberOfLines={1}
-          ellipsizeMode="tail"
-          style={{
-            textAlign: 'center',
-            width: '100%',
-            fontSize: 10,
-          }}>
-          {item.name}
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-const AddStory = () => {
-  return (
-    <View style={styles.featuredImages}>
-      <View>
-        <Image source={stories[1].image} style={[styles.featuredImage]} />
-        <View style={styles.infoBottom}>
-          <AddIcon width={10} height={10} fill="#fff" />
-        </View>
-      </View>
-      <View>
-        <Text
-          variant="labelMedium"
-          numberOfLines={1}
-          ellipsizeMode="tail"
-          style={{
-            textAlign: 'center',
-            // width: 65,
-            fontSize: 10,
-          }}>
-          Your Story
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-const Featured = () => {
-  return (
-    <View style={[styles.interestContainer, styles.bb1]}>
-      <View style={[styles.interests]}>
-        <AddStory />
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={stories}
-          renderItem={({item}) => <FeaturedImage item={item} />}
-          keyExtractor={item => item.id}
-          bounces={true}
-        />
-      </View>
-    </View>
-  );
-};
-
-const Topbar = () => {
-  const navigation = useNavigation();
-  return (
-    <View style={[styles.center, styles.spaceBetween]}>
-      <Text
-        variant="headlineMedium"
-        style={{fontWeight: 900, color: '#b84d4d'}}>
-        Feed
-      </Text>
-      <View>
-        <TouchableNativeFeedback onPress={() => navigation.navigate('Inbox')}>
-          <InboxIcon width={20} height={20} />
-        </TouchableNativeFeedback>
-      </View>
-    </View>
-  );
-};
-
-const Post = ({item}) => {
-  const navigation = useNavigation();
-  return (
-    <View style={styles.postContainer}>
-      <View style={styles.center}>
-        <View style={styles.postHeader}>
-          <View style={styles.postHeaderLeft}>
-            <TouchableNativeFeedback
-              onPress={() => navigation.navigate('Profile')}>
-              <Image
-                source={item.image}
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 500,
-                  marginRight: 10,
-                }}
-              />
-            </TouchableNativeFeedback>
-            <View>
-              <Text variant="labelMedium" style={{fontSize: 12}}>
-                {item.name}
-              </Text>
-            </View>
-          </View>
-          <View>
-            <Text variant="labelMedium" style={{fontSize: 12}}>
-              <MoreIcon />
+    <ScrollView style={styles.container}>
+      <View style={styles.mt}>
+        <View style={[styles.mx, styles.row]}>
+          <Avatar.Image
+            size={50}
+            source={require('../assets/img/profile1.jpg')}
+          />
+          <View style={styles.ml}>
+            <Text variant="titleLarge">Hello, John</Text>
+            <Text variant="titleSmall" style={{color: '#8F8F8F'}}>
+              What are you looking for?
             </Text>
           </View>
         </View>
       </View>
-      <View style={styles.postBody}>
-        <Image
-          source={item.image}
-          style={{
-            width: width,
-            height: moderateScale(height / 2),
-            marginTop: 10,
-          }}
+      <View style={styles.mx}>
+        <Searchbar
+          style={styles.searchbar}
+          placeholder="Search"
+          onChangeText={onChangeSearch}
+          value={searchQuery}
         />
       </View>
-      <View style={styles.center}>
-        <View style={styles.postFooter}>
-          <View style={styles.postFooterLeft}>
-            <View style={styles.postFooterLeftItem}>
-              <HeartIcon width={20} />
-            </View>
-            <View style={styles.postFooterLeftItem}>
-              <CommentIcon width={20} />
-            </View>
-            <View style={styles.postFooterLeftItem}>
-              <DirectIcon width={20} />
-            </View>
-          </View>
-          <View>
-            <SaveIcon width={18} />
-          </View>
-        </View>
-        <View style={styles.timeAgo}>
-          <Text style={{fontSize: 10, fontWeight: 500, color: '#D3D3D3'}}>
-            {timeAgo(item.timeAgo)}
-          </Text>
-        </View>
+      <View style={[styles.mx, styles.row, styles.justifyBetween]}>
+        <RectBadge IconName="search1" name="Find" />
+        <RectBadge IconName="antdesign" name="Live" />
+        <RectBadge IconName="search1" name="Find" />
+        <RectBadge IconName="search1" name="Find" />
       </View>
-    </View>
-  );
-};
-
-const Posts = () => {
-  return <View style={[styles.postsContainer]}></View>;
-};
-
-export default function Home() {
-  return (
-    <ScrollView style={styles.container}>
-      {/* <Posts /> */}
-      <FlatList
-        ListHeaderComponent={
-          <>
-            <Topbar />
-            <Featured />
-          </>
-        }
-        data={stories}
-        renderItem={({item}) => <Post item={item} />}
-        keyExtractor={item => item.id}
-      />
     </ScrollView>
   );
 }
@@ -220,182 +45,46 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
-  postsContainer: {
-    backgroundColor: '#fff',
-  },
-  bb1: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#e4e2e2',
-  },
-  spaceBetween: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  infoBottom: {
-    position: 'absolute',
-    bottom: -4,
-    right: -4,
-    backgroundColor: '#b84d4d',
-    borderRadius: 500,
-    padding: 5,
-  },
-  center: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
     width: '90%',
+    alignSelf: 'center',
   },
-  profileContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
+  mt: {
+    marginTop: 6,
   },
-  profileWrapper: {
-    padding: 10,
-    width: 150,
-    height: 150,
-    borderRadius: 500,
-    backgroundColor: '#e4e2e2',
+  mx: {
+    marginTop: 6,
+    marginBottom: 6,
   },
-  profileImg: {
-    width: 150 - 20,
-    height: 150 - 20,
-    borderRadius: 500,
-    // borderWidth: 5,
-    // borderColor: '#ff0080',
-  },
-  profileInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    paddingTop: 5,
-    paddingBottom: 5,
-  },
-  interestContainer: {
-    marginTop: 10,
-  },
-  interests: {
-    marginTop: 9,
-    marginLeft: 8,
-    gap: 4,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  profileButtons: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-  },
-  profileButton: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  featuredImages: {
+  ml: {
     marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 10,
-    marginTop: 0,
   },
-  featuredImage: {
-    objectFit: 'cover',
-    aspectRatio: 1,
-    width: 60,
-    height: 60,
+  justifyBetween: {
+    justifyContent: 'space-between',
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  searchbar: {
     borderRadius: 10,
   },
-  tabsContainer: {
-    width: '100%',
-    marginTop: 10,
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#ffffff',
-  },
-  tabBtn: {
-    width: '100%',
-    margin: 0,
-    padding: 0,
-    borderRadius: 0,
-    flex: 1,
-  },
-  postContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    // padding: 10,
-    // backgroundColor: '#fff',
-    marginBottom: 10,
-    marginTop: 10,
-  },
-  postHeader: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  postHeaderLeft: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  postHeaderLeftText: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginLeft: 10,
-  },
-  postHeaderRight: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    marginTop: 10,
-  },
-  postBody: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-  },
-  postFooter: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  postFooterLeft: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  postImage: {
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  postFooter: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  postFooterLeftIcon: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 10,
-  },
-
-  postFooterLeftItem: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 10,
-  },
 });
+
+// import Post from '../components/Post';
+// import Topbar from '../components/Topbar';
+// import Featured from '../components/Featured';
+// import {stories} from '@components//constants';
+// export default function Home() {
+//   return (
+//     <FlatList
+//       ListHeaderComponent={
+//         <>
+//           <Topbar />
+//           <Featured />
+//         </>
+//       }
+//       data={stories}
+//       renderItem={({item}) => <Post item={item} />}
+//       keyExtractor={item => item.id}
+//     />
+//   );
+// }

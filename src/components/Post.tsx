@@ -1,3 +1,5 @@
+import {useNavigation} from '@react-navigation/native';
+import timeAgo from '@utils/timeAgo';
 import {
   View,
   StyleSheet,
@@ -8,19 +10,12 @@ import {
   ScrollView,
   StatusBar,
   TouchableNativeFeedback,
-  useWindowDimensions,
-  Platform,
   PixelRatio,
+  Platform,
 } from 'react-native';
-import {Text, Chip, Button, Title, Paragraph} from 'react-native-paper';
 import React from 'react';
-
-import {
-  Tabs,
-  TabScreen,
-  useTabIndex,
-  useTabNavigation,
-} from 'react-native-paper-tabs';
+import {Button, Text} from 'react-native-paper';
+import {stories} from './constants';
 import {
   AddIcon,
   CommentIcon,
@@ -31,20 +26,14 @@ import {
   SaveIcon,
 } from '@svg';
 
-import {stories} from './constants';
-
-import {useNavigation} from '@react-navigation/native';
-import timeAgo from '../utils/timeAgo';
-
 const {width, height} = Dimensions.get('window');
-
 // Sizes based on Google Nexus 5 on genymotion
 const guidelineBaseWidth = 360;
 const guidelineBaseHeight = 592;
 
-const scale = (size: number) => (width / guidelineBaseWidth) * size;
-const verticalScale = (size: number) => (height / guidelineBaseHeight) * size;
-const moderateScale = (size: number, factor = 0.5) => {
+const scale = size => (width / guidelineBaseWidth) * size;
+const verticalScale = size => (height / guidelineBaseHeight) * size;
+const moderateScale = (size, factor = 0.5) => {
   if (Platform.OS === 'ios') {
     factor = PixelRatio.get();
   }
@@ -52,7 +41,7 @@ const moderateScale = (size: number, factor = 0.5) => {
   return size + (scale(size) - size) * factor;
 };
 
-const Post = ({item}: any) => {
+const Post = ({item}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.postContainer}>
@@ -121,17 +110,7 @@ const Post = ({item}: any) => {
   );
 };
 
-const Posts = () => {
-  return (
-    <FlatList
-      data={stories}
-      renderItem={({item}) => <Post item={item} />}
-      keyExtractor={item => item.id}
-    />
-  );
-};
-
-export default Posts;
+export default Post;
 
 const styles = StyleSheet.create({
   container: {

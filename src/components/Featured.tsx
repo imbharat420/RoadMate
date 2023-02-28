@@ -8,19 +8,12 @@ import {
   ScrollView,
   StatusBar,
   TouchableNativeFeedback,
-  useWindowDimensions,
-  Platform,
   PixelRatio,
+  Platform,
 } from 'react-native';
-import {Text, Chip, Button, Title, Paragraph} from 'react-native-paper';
 import React from 'react';
-
-import {
-  Tabs,
-  TabScreen,
-  useTabIndex,
-  useTabNavigation,
-} from 'react-native-paper-tabs';
+import {Button, Text} from 'react-native-paper';
+import {stories} from './constants';
 import {
   AddIcon,
   CommentIcon,
@@ -29,109 +22,79 @@ import {
   InboxIcon,
   MoreIcon,
   SaveIcon,
-} from '@svg';
-
-import {stories} from './constants';
-
+} from '../assets/svg';
 import {useNavigation} from '@react-navigation/native';
-import timeAgo from '../utils/timeAgo';
 
-const {width, height} = Dimensions.get('window');
-
-// Sizes based on Google Nexus 5 on genymotion
-const guidelineBaseWidth = 360;
-const guidelineBaseHeight = 592;
-
-const scale = (size: number) => (width / guidelineBaseWidth) * size;
-const verticalScale = (size: number) => (height / guidelineBaseHeight) * size;
-const moderateScale = (size: number, factor = 0.5) => {
-  if (Platform.OS === 'ios') {
-    factor = PixelRatio.get();
-  }
-
-  return size + (scale(size) - size) * factor;
-};
-
-const Post = ({item}: any) => {
-  const navigation = useNavigation();
+const FeaturedImage = ({item}) => {
   return (
-    <View style={styles.postContainer}>
-      <View style={styles.center}>
-        <View style={styles.postHeader}>
-          <View style={styles.postHeaderLeft}>
-            <TouchableNativeFeedback
-              onPress={() => navigation.navigate('Profile')}>
-              <Image
-                source={item.image}
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 500,
-                  marginRight: 10,
-                }}
-              />
-            </TouchableNativeFeedback>
-            <View>
-              <Text variant="labelMedium" style={{fontSize: 12}}>
-                {item.name}
-              </Text>
-            </View>
-          </View>
-          <View>
-            <Text variant="labelMedium" style={{fontSize: 12}}>
-              <MoreIcon />
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.postBody}>
-        <Image
-          source={item.image}
+    <View style={styles.featuredImages}>
+      <Image source={item.image} style={styles.featuredImage} />
+      <View>
+        <Text
+          variant="labelMedium"
+          numberOfLines={1}
+          ellipsizeMode="tail"
           style={{
-            width: width,
-            height: moderateScale(height / 2),
-            marginTop: 10,
-          }}
-        />
-      </View>
-      <View style={styles.center}>
-        <View style={styles.postFooter}>
-          <View style={styles.postFooterLeft}>
-            <View style={styles.postFooterLeftItem}>
-              <HeartIcon width={20} />
-            </View>
-            <View style={styles.postFooterLeftItem}>
-              <CommentIcon width={20} />
-            </View>
-            <View style={styles.postFooterLeftItem}>
-              <DirectIcon width={20} />
-            </View>
-          </View>
-          <View>
-            <SaveIcon width={18} />
-          </View>
-        </View>
-        <View style={styles.timeAgo}>
-          <Text style={{fontSize: 10, fontWeight: 500, color: '#D3D3D3'}}>
-            {timeAgo(item.timeAgo)}
-          </Text>
-        </View>
+            textAlign: 'center',
+            width: '100%',
+            fontSize: 10,
+          }}>
+          {item.name}
+        </Text>
       </View>
     </View>
   );
 };
 
-const Posts = () => {
+const AddStory = () => {
   return (
-    <FlatList
-      data={stories}
-      renderItem={({item}) => <Post item={item} />}
-      keyExtractor={item => item.id}
-    />
+    <View style={styles.featuredImages}>
+      <View>
+        <Image source={stories[1].image} style={[styles.featuredImage]} />
+        <View style={styles.infoBottom}>
+          <AddIcon width={10} height={10} fill="#fff" />
+        </View>
+      </View>
+      <View>
+        <Text
+          variant="labelMedium"
+          numberOfLines={1}
+          ellipsizeMode="tail"
+          style={{
+            textAlign: 'center',
+            // width: 65,
+            fontSize: 10,
+          }}>
+          Your Story
+        </Text>
+      </View>
+    </View>
   );
 };
 
-export default Posts;
+const Featured = () => {
+  return (
+    <View style={[styles.interestContainer, styles.bb1]}>
+      <View style={[styles.interests]}>
+        <FlatList
+          horizontal
+          ListHeaderComponent={
+            <>
+              <AddStory />
+            </>
+          }
+          showsHorizontalScrollIndicator={false}
+          data={stories}
+          renderItem={({item}) => <FeaturedImage item={item} />}
+          keyExtractor={item => item.id}
+          bounces={true}
+        />
+      </View>
+    </View>
+  );
+};
+
+export default Featured;
 
 const styles = StyleSheet.create({
   container: {

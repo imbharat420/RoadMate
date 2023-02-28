@@ -6,7 +6,7 @@ export default function Splash({navigation}) {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate('Onboarding');
-    }, 3000);
+    }, 1000);
   }, []);
   return (
     <View style={{width: '100%', height: '100%'}}>

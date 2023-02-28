@@ -2,17 +2,13 @@ import {
   View,
   StyleSheet,
   Image,
-  Dimensions,
   FlatList,
   SafeAreaView,
   ScrollView,
-  StatusBar,
-  TouchableNativeFeedback,
-  useWindowDimensions,
 } from 'react-native';
-import {Text, Chip, Button, Title, Paragraph} from 'react-native-paper';
+import {Text, Chip, Button, Title} from 'react-native-paper';
 import React from 'react';
-import {stories, myInterests} from './constants';
+import {stories, myInterests} from '../components/constants';
 import {
   Tabs,
   TabScreen,
@@ -20,19 +16,6 @@ import {
   useTabNavigation,
 } from 'react-native-paper-tabs';
 
-import {
-  AddIcon,
-  CommentIcon,
-  DirectIcon,
-  HeartIcon,
-  InboxIcon,
-  MoreIcon,
-  SaveIcon,
-} from '../assets/svg';
-import {useNavigation} from '@react-navigation/native';
-import timeAgo from '../utils/timeAgo';
-
-import {TabView, SceneMap} from 'react-native-tab-view';
 import TabComp from '../components/TabView';
 import Posts from '../components/Posts';
 
@@ -62,25 +45,6 @@ const ProfileHeader = () => {
     </View>
   );
 };
-
-// const ProfileButtons = () => {
-//   return (
-//     <View style={styles.profileButtons}>
-//       <View style={styles.profileButton}>
-//         <Text variant="labelMedium">Followers</Text>
-//         <Text variant="titleLarge">1.2k</Text>
-//       </View>
-//       <View style={styles.profileButton}>
-//         <Text variant="labelMedium">Following</Text>
-//         <Text variant="titleLarge">1.2k</Text>
-//       </View>
-//       <View style={styles.profileButton}>
-//         <Text variant="labelMedium">Posts</Text>
-//         <Text variant="titleLarge">1.2k</Text>
-//       </View>
-//     </View>
-//   );
-// };
 
 const ProfileButtons = () => {
   return (

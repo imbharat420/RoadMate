@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {Provider as PaperProvider, Text, Button} from 'react-native-paper';
+import Btn from './components/Btn';
+
 // import CardComponent from './src/Card';
 
 const CardComponent = () => <Text>Hello</Text>;
@@ -7,6 +9,7 @@ const Main = () => {
   return (
     <PaperProvider>
       <Text>This is text</Text>
+
       <Button
         icon={{
           uri: 'https://avatars0.githubusercontent.com/u/17571969?v=3&s=400',
@@ -23,5 +26,5 @@ const Main = () => {
       <CardComponent />
     </PaperProvider>
   );
-}
-export default Main
+};
+export default Main;

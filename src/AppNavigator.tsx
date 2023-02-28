@@ -17,7 +17,7 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Splash"
           component={Splash}
           options={{headerShown: false}}
@@ -26,11 +26,11 @@ export default function AppNavigator() {
           name="Onboarding"
           component={OnboardingScreen}
           options={{headerShown: false}}
-        />
+        /> */}
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{headerShown: true}}
+          options={{headerShown: false}}
         />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Inbox" component={Inbox} />
