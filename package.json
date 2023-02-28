@@ -9,7 +9,6 @@
     "start": "react-native start",
     "test": "jest",
     "format": "prettier --write \"**./*.{ts,tsx}\"",
-    "prepare": "husky install"
   },
   "dependencies": {
     "@react-navigation/drawer": "^6.6.2",
