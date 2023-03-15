@@ -6,11 +6,14 @@ import {
 import AppNavigator from './AppNavigator';
 // import GetStarted from './screens/GetStarted';
 
-import BottomNavigation from '../components/BottomNavigation';
+import BottomNavigation from '@components/BottomNavigation';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native/';
 
 // const CardComponent = () => <Text>Hello</Text>;
+import {enableLatestRenderer} from 'react-native-maps';
+
+enableLatestRenderer();
 
 const theme = {
   ...DefaultTheme,
@@ -31,9 +34,6 @@ export default function Main() {
     </SafeAreaProvider>
   );
 }
-/*
-
-*/
 
 /*
  <Text>This is text</Text>

@@ -1,7 +1,7 @@
 import SideBorderText from '../../components/SideBorderText';
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
-import { IconButton, MD3Colors, Image, Button, Text } from 'react-native-paper';
+import React, {useEffect} from 'react';
+import {View} from 'react-native';
+import {IconButton, MD3Colors, Image, Button, Text} from 'react-native-paper';
 import styles from '../styles';
 import {
   Logo,
@@ -11,7 +11,7 @@ import {
   GoogleIcon,
 } from '../../assets/svg';
 
-export default function LoginWith() {
+export default function LoginWith({navigation}) {
   return (
     // eslint-disable-next-line react-native/no-inline-styles
     <View style={styles.container}>
@@ -24,18 +24,16 @@ export default function LoginWith() {
       <Button
         mode="contained"
         labelStyle={styles.label}
-        onPress={() => console.log('Pressed')}
-        style={styles.btn}
-      >
-        <Text style={{ color: '#f92e4b' }}>Continue With Email</Text>
+        onPress={() => navigation.navigate('Login With Email')}
+        style={styles.btn}>
+        <Text style={{color: '#f92e4b'}}>Continue With Email</Text>
       </Button>
       <Button
         mode="contained"
         labelStyle={styles.label}
-        onPress={() => console.log('Pressed')}
-        style={styles.btn}
-      >
-        <Text style={{ color: '#f92e4b' }}>Use phone number</Text>
+        onPress={() => navigation.navigate('Login With Number')}
+        style={styles.btn}>
+        <Text style={{color: '#f92e4b'}}>Use phone number</Text>
       </Button>
       <View style={[styles.bottomStyle]}>
         <SideBorderText width={110} text="or sign up with" />

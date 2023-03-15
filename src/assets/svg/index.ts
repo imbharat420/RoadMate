@@ -26,6 +26,7 @@ import SaveIcon from './options/SaveIcon';
 import FindIcon from './options/FindIcon';
 import UserIcon from './options/UserIcon';
 import AddIcon from './options/AddIcon';
+import Coin from './options/Coin';
 
 export {
   MaleIcon,
@@ -50,4 +51,5 @@ export {
   UserIcon,
   DirectIcon,
   AddIcon,
+  Coin,
 };
