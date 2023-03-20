@@ -3,14 +3,11 @@ import {
   MD3LightTheme as DefaultTheme,
   Provider as PaperProvider,
 } from 'react-native-paper';
-import AppNavigator from './AppNavigator';
+import AppNavigator from './navigators/AppNavigator';
 // import GetStarted from './screens/GetStarted';
 
-import BottomNavigation from '@components/BottomNavigation';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {NavigationContainer} from '@react-navigation/native/';
 
-// const CardComponent = () => <Text>Hello</Text>;
 import {enableLatestRenderer} from 'react-native-maps';
 
 enableLatestRenderer();

@@ -47,43 +47,43 @@ export let interests = [
   {
     id: 10,
     name: 'Book',
-    image: require('../assets/img/couple.png'),
+    image: require('../assets/img/architecture.png'),
   },
   {
     id: 11,
-    name: 'Writing',
+    name: 'Soccer ',
 
-    image: require('../assets/img/couple.png'),
+    image: require('../assets/img/fashion.png'),
   },
   {
     id: 12,
     name: 'Nature',
-    image: require('../assets/img/couple.png'),
+    image: require('../assets/img/photography.png'),
   },
   {
     id: 13,
     name: 'Painiting',
-    image: require('../assets/img/couple.png'),
+    image: require('../assets/img/fashion.png'),
   },
   {
     id: 14,
     name: 'Football',
-    image: require('../assets/img/couple.png'),
+    image: require('../assets/img/photography.png'),
   },
   {
     id: 15,
-    name: 'People',
-    image: require('../assets/img/couple.png'),
+    name: 'Jogging',
+    image: require('../assets/img/movie.png'),
   },
   {
     id: 16,
-    name: 'Animals',
-    image: require('../assets/img/couple.png'),
+    name: 'Tennis',
+    image: require('../assets/img/photography.png'),
   },
   {
     id: 17,
     name: 'Gym & Fitness',
-    image: require('../assets/img/couple.png'),
+    image: require('../assets/img/movie.png'),
   },
 ];
 

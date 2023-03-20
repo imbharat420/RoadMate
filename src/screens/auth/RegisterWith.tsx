@@ -18,7 +18,7 @@ import {
   GoogleIcon,
 } from '../../assets/svg';
 
-const LoginForm = ({navigation}) => {
+const RegisterWith = ({navigation}) => {
   const [text, setText] = React.useState('');
   return (
     <View>
@@ -26,7 +26,7 @@ const LoginForm = ({navigation}) => {
         <View style={[styles.poster, styles.mt15]}>
           <Logo width={100} height={100} />
           <Text variant="titleLarge" style={styles.text}>
-            Sign up with Number
+            Sign In
           </Text>
         </View>
         <View style={[styles.mt15]}>
@@ -34,8 +34,8 @@ const LoginForm = ({navigation}) => {
             <TextInput
               style={{backgroundColor: 'white', width: 300, height: 50}}
               mode="outlined"
-              label="Phone Number"
-              placeholder="Enter Your Phone Number"
+              label="Email/Phone"
+              placeholder="Enter Your Email/Phone Number"
               right={<TextInput.Icon icon="phone" />}
             />
           </View>
@@ -53,9 +53,10 @@ const LoginForm = ({navigation}) => {
             <Button
               mode="contained"
               labelStyle={styles.label}
+              // eslint-disable-next-line react/prop-types
               onPress={() => navigation.navigate('Home')}
               style={styles.btn}>
-              <Text style={{color: '#f92e4b'}}>Sign up</Text>
+              <Text style={{color: '#f92e4b'}}>Sign In</Text>
             </Button>
           </View>
         </View>
@@ -64,20 +65,4 @@ const LoginForm = ({navigation}) => {
   );
 };
 
-export default LoginForm;
-/*
-  <Button
-          mode="contained"
-          labelStyle={styles.label}
-          onPress={() => navigation.navigate('LoginForm')}
-          style={styles.btn}>
-          <Text style={{color: '#f92e4b'}}>Continue With Email</Text>
-        </Button>
-        <Button
-          mode="contained"
-          labelStyle={styles.label}
-          onPress={() => navigation.navigate('LoginForm')}
-          style={styles.btn}>
-          <Text style={{color: '#f92e4b'}}>Use phone number</Text>
-        </Button>
-        */
+export default RegisterWith;

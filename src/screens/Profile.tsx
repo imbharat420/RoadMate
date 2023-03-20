@@ -53,6 +53,7 @@ const ProfileButtons = () => {
         mode="contained"
         style={{backgroundColor: '#b84d4d', flex: 1, margin: 10}}
         textColor="#fff"
+        icon={'account-plus'}
         onPress={() => console.log('Pressed')}>
         Connect
       </Button>
@@ -60,6 +61,7 @@ const ProfileButtons = () => {
         mode="contained"
         style={{backgroundColor: '#b84d4d', flex: 1, margin: 10}}
         textColor="#fff"
+        icon={'message'}
         onPress={() => console.log('Pressed')}>
         Message
       </Button>

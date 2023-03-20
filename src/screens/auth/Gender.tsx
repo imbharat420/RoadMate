@@ -11,7 +11,7 @@ import {
 } from '../../assets/svg';
 import styles from '@screens/styles';
 import {Image} from 'react-native-paper/lib/typescript/components/Avatar/Avatar';
-export default function Gender() {
+export default function Gender({navigation}) {
   const [checked, setChecked] = React.useState('male');
   return (
     <View style={styles.container}>

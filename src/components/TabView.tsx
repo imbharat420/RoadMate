@@ -37,6 +37,8 @@ const TabComp = () => {
       renderTabBar={props => (
         <TabBar
           {...props}
+          indicatorStyle={{backgroundColor: '#d82c2c'}}
+          activeColor="#e62020"
           style={{backgroundColor: '#fff'}}
           labelStyle={{color: 'black', fontSize: 14}}
         />

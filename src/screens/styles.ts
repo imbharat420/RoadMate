@@ -51,6 +51,31 @@ const styles = StyleSheet.create({
 
     elevation: 15,
   },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    marginTop: 20,
+  },
+  interests: {
+    borderColor: '#000',
+    marginTop: 20,
+    justifyContent: 'center',
+    gap: 10,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  itemShadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
+    elevation: 15,
+  },
 });
 
 export default styles;
