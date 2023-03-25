@@ -6,7 +6,7 @@
     <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
       <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBXAvHo5pW9a-2KpCkr9KE6Htw_wYE8kEw"/>
+        android:value="AIzaSyCawvSY_VXccRerS_j4QEl4gYDtBvzla08"/>
     </application>
     
     <application

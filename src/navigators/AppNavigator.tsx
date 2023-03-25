@@ -34,7 +34,7 @@ const initStack = [
   {
     name: 'Tabs',
     component: BottomNavigationWrapper,
-    options: {headerShown: true},
+    options: {headerShown: false},
   },
   {
     name: 'Parent',
@@ -44,7 +44,7 @@ const initStack = [
   {
     name: 'Home',
     component: Home,
-    options: {headerShown: true},
+    options: {headerShown: false},
   },
   {
     name: 'Select Interest',

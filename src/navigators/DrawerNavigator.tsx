@@ -1,4 +1,4 @@
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import OIcon from 'react-native-vector-icons/Octicons';
 import {
@@ -12,7 +12,6 @@ import {
   Switch,
 } from 'react-native-paper';
 import React from 'react';
-
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -25,7 +24,7 @@ const Sidebar = createDrawerNavigator();
 function DrawerContent(props: any) {
   return (
     <View style={{flex: 1}}>
-      <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView {...props} headerShown={false}>
         <View style={styles.drawerContent}>
           <View style={styles.userInfoSection}>
             <View style={{flexDirection: 'row', marginTop: 15}}>
@@ -136,7 +135,9 @@ export default function DrawerNavigator() {
       <Sidebar.Screen
         name="Main"
         component={Main}
-        options={{headerShown: true}}
+        options={{
+          headerShown: true,
+        }}
       />
     </Sidebar.Navigator>
   );
@@ -191,3 +192,48 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 });
+
+/*
+ headerTransparent: true,
+          header: () => (
+            <View
+              style={{
+                padding: 10,
+                backgroundColor: 'transparent',
+                position: 'relative',
+              }}>
+              <Image
+                source={require('../assets/img/profile1.jpg')}
+                style={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 50,
+                  position: 'relative',
+                  top: 0,
+                  left: 0,
+                }}
+              />
+              <Icon
+                name="microsoft-xbox-controller-menu"
+                size={30}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  right: 0,
+                  padding: 10,
+                }}
+                color="#db0202"
+              />
+            </View>
+          ),
+          headerStyle: {
+            top: 20,
+            position: 'absolute',
+            backgroundColor: 'transparent',
+            width: 10,
+          },
+          headerTintColor: 'transparent',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          */

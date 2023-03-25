@@ -56,15 +56,15 @@ const ExtraEarn = ({navigation}) => {
       <View style={[styles.mt, styles.spaceBetween, styles.content]}>
         <View
           style={{
-            backgroundColor: '#e7e6e6',
             width: '100%',
-            borderRadius: 10,
           }}>
           <View
             style={[
               styles.row,
               {
                 padding: 10,
+                backgroundColor: '#e7e6e6',
+                borderRadius: 10,
               },
             ]}>
             <Image
@@ -125,6 +125,9 @@ const ExtraEarn = ({navigation}) => {
               styles.row,
               {
                 padding: 10,
+                backgroundColor: '#e7e6e6',
+                borderRadius: 10,
+                marginTop: 10,
               },
             ]}>
             <Image
@@ -134,6 +137,7 @@ const ExtraEarn = ({navigation}) => {
                 height: 100,
                 borderRadius: 10,
                 marginRight: 10,
+                marginTop: 10,
               }}
             />
             <View
@@ -173,13 +177,23 @@ const ExtraEarn = ({navigation}) => {
                   style={{
                     color: '#ffffff',
                     fontWeight: 100,
-                    marginRight: 10,
+                    // marginRight: 10,
+                    margin: 0,
                   }}>
                   watch now
                 </Text>
               </Button>
             </View>
           </View>
+          <Image
+            source={require('../assets/img/exercise.png')}
+            style={{
+              // flex: 100,
+              width: width - 40,
+              height: 170,
+              borderRadius: 10,
+            }}
+          />
         </View>
       </View>
     </View>

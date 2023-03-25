@@ -40,21 +40,18 @@ export default function Home({navigation}) {
         style={{
           flex: 1,
           backgroundColor: '#efe7e7',
+          zIndex: -1,
         }}>
-        <View style={[styles.content]}>
-          <View style={[styles.row]}>
-            <Text>MAP RENDER HERE</Text>
-          </View>
-        </View>
+        <Map />
       </View>
       <BottomSheet
         index={0}
-        snapPoints={['50%', '100%']}
+        snapPoints={['25%', '100%']}
         onChange={index => {
           console.log('BottomSheet index changed to: ', index);
         }}>
         <BottomSheetView style={styles.lowerHalf}>
-          <View
+          <ScrollView
             style={{
               flex: 1,
               backgroundColor: '#ffffff',
@@ -112,23 +109,12 @@ export default function Home({navigation}) {
               </View>
               <ChallengeYourself navigation={navigation} />
               <ExtraEarn navigation={navigation} />
-
-              <View style={[styles.mt, styles.row, styles.spaceBetween]}>
-                <View
-                  style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: 10,
-                    padding: 10,
-                    width: '45%',
-                    height: 150,
-                    shadowColor: '#171717',
-                    shadowOffset: {width: -2, height: 4},
-                    shadowOpacity: 0.2,
-                    shadowRadius: 3,
-                  }}></View>
-              </View>
+              <View
+                style={{
+                  height: 50,
+                }}></View>
             </View>
-          </View>
+          </ScrollView>
         </BottomSheetView>
       </BottomSheet>
     </View>
